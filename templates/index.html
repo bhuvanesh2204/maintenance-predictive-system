@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Maintenance Agent</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🏭 Manufacturing Equipment Predictive Maintenance System</h1>
+            <p>AI-powered equipment monitoring to prevent unexpected downtime</p>
+        </header>
+
+        <div class="dashboard">
+            <!-- Status Panel -->
+            <div class="status-panel">
+                <div class="status-card" id="statusCard">
+                    <h3>Equipment Status</h3>
+                    <div class="status-indicator" id="statusIndicator">
+                        <div class="status-dot"></div>
+                        <span class="status-text">Loading...</span>
+                    </div>
+                    <div class="confidence" id="confidence">Confidence: --%</div>
+                    <div class="last-update" id="lastUpdate">Last update: --</div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="retrainModel()">🔄 Retrain Model</button>
+                    <button class="btn btn-secondary" onclick="refreshData()">📊 Refresh Data</button>
+                </div>
+            </div>
+
+            <!-- Sensor Gauges -->
+            <div class="sensors-grid">
+                <div class="sensor-card">
+                    <h4>🌡️ Temperature</h4>
+                    <div class="gauge-container">
+                        <canvas id="tempGauge"></canvas>
+                        <div class="sensor-value" id="tempValue">-- °C</div>
+                    </div>
+                </div>
+
+                <div class="sensor-card">
+                    <h4>📳 Vibration</h4>
+                    <div class="gauge-container">
+                        <canvas id="vibGauge"></canvas>
+                        <div class="sensor-value" id="vibValue">-- mm/s</div>
+                    </div>
+                </div>
+
+                <div class="sensor-card">
+                    <h4>💨 Pressure</h4>
+                    <div class="gauge-container">
+                        <canvas id="pressGauge"></canvas>
+                        <div class="sensor-value" id="pressValue">-- psi</div>
+                    </div>
+                </div>
+
+                <div class="sensor-card">
+                    <h4>⚡ Rotation Speed</h4>
+                    <div class="gauge-container">
+                        <canvas id="speedGauge"></canvas>
+                        <div class="sensor-value" id="speedValue">-- RPM</div>
+                    </div>
+                </div>
+
+                <div class="sensor-card">
+                    <h4>🔧 Tool Wear</h4>
+                    <div class="gauge-container">
+                        <canvas id="wearGauge"></canvas>
+                        <div class="sensor-value" id="wearValue">-- hours</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alert Panel -->
+            <div class="alert-panel hidden" id="alertPanel">
+                <div class="alert alert-critical">
+                    <h3>🚨 MAINTENANCE REQUIRED</h3>
+                    <p>High probability of equipment failure detected. Please schedule maintenance immediately.</p>
+                    <button class="btn btn-alert" onclick="acknowledgeAlert()">Acknowledge</button>
+                </div>
+            </div>
+
+            <!-- Log Panel -->
+            <div class="log-panel">
+                <h3>Event Log</h3>
+                <div class="log-container" id="logContainer">
+                    <div class="log-entry">System initialized. Monitoring started...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
